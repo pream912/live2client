@@ -22,6 +22,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    {src: '~/plugins/vue-videojs7.js', mode: 'client'}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -39,6 +40,7 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    '@nuxtjs/firebase',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -51,6 +53,22 @@ export default {
   pwa: {
     manifest: {
       lang: 'en'
+    }
+  },
+
+  firebase: {
+    config: {
+      apiKey: "AIzaSyCz3nFN_E3CXCSUigKy5qtBbnGc4GiGSI8",
+      authDomain: "live2-3af8b.firebaseapp.com",
+      databaseURL: "https://live2-3af8b-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "live2-3af8b",
+      storageBucket: "live2-3af8b.appspot.com",
+      messagingSenderId: "310056093070",
+      appId: "1:310056093070:web:0da53597c0f863587110df"
+    },
+    services: {
+      database: true,
+      storage: true
     }
   },
 

@@ -1,9 +1,9 @@
 <template>
     <v-container>
         <v-row>
-            <v-col cols="12" align="center" justify="center">
+            <!-- <v-col cols="12" align="center" justify="center">
                 <v-img max-height="250" contain src="/top.jpeg"></v-img>
-            </v-col>
+            </v-col> -->
             <v-col cols="12" align="center" justify="center">
                 <div >
                     <!-- <video-player class="player"
@@ -21,9 +21,9 @@
                     </video-player>
                 </div>
             </v-col>
-            <v-col cols="12" align="center" justify="center">
+            <!-- <v-col cols="12" align="center" justify="center">
                 <v-img max-height="250" contain src="/bottom.jpeg"></v-img>
-            </v-col>
+            </v-col> -->
         </v-row>
       </v-container>
 </template>
@@ -87,10 +87,10 @@ export default {
         const host = window.location.host;
         const parts = host.split('.');
         console.log(parts);
-        this.$fire.database.ref(`events/${eid}`).get('once')
+        this.$fire.database.ref(`streams/${parts}`).get('once')
         .then((data) => {
             var event = data.val()
-            this.playVideo(event.liveURL)
+            this.playVideo(event.url)
         })
     }
 };

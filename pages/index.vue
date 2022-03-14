@@ -87,7 +87,7 @@ export default {
         const host = window.location.host;
         const parts = host.split('.');
         console.log(parts);
-        this.$fire.database.ref(`streams/${parts}`).get('once')
+        this.$fire.database.ref(`streams/${parts[0]}`).get('once')
         .then((data) => {
             var event = data.val()
             this.playVideo(event.url)

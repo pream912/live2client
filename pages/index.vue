@@ -1,9 +1,9 @@
 <template>
     <v-container>
         <v-row>
-            <!-- <v-col cols="12" align="center" justify="center">
-                <v-img max-height="250" contain src="/top.jpeg"></v-img>
-            </v-col> -->
+            <v-col v-if="top != ''"  cols="12" align="center" justify="center">
+                <v-img max-height="250" contain :src="top"></v-img>
+            </v-col>
             <v-col cols="12" align="center" justify="center">
                 <div >
                     <!-- <video-player class="player"
@@ -21,9 +21,9 @@
                     </video-player>
                 </div>
             </v-col>
-            <!-- <v-col cols="12" align="center" justify="center">
-                <v-img max-height="250" contain src="/bottom.jpeg"></v-img>
-            </v-col> -->
+            <v-col v-if="bottom != ''" cols="12" align="center" justify="center">
+                <v-img max-height="250" contain :src="bottom"></v-img>
+            </v-col>
         </v-row>
       </v-container>
 </template>
@@ -33,7 +33,8 @@
 export default {
     name: 'App',
     data: () => ({
-        eid: '',
+        top: '',
+        bottom: '',
         playerOps: {
             autoplay: true,
             control: true,
@@ -83,14 +84,14 @@ export default {
     },
 
     mounted () {
-        const eid = this.$route.params.eid
         const host = window.location.host;
         const parts = host.split('.');
-        console.log(parts);
         this.$fire.database.ref(`streams/${parts[0]}`).get('once')
         .then((data) => {
             var event = data.val()
             this.playVideo(event.url)
+            this.top = event.top
+            this.bottom = event.bottom
         })
     }
 };

@@ -1,7 +1,7 @@
 <template>
     <v-container>
 
-        
+
         <v-row>
             <!-- <v-col cols="12" align="center" justify="center">
                 <v-img max-height="250" contain src="/top.jpeg"></v-img>
@@ -85,7 +85,7 @@ export default {
         const host = window.location.host;
         const parts = host.split('.');
         console.log(parts);
-        this.$fire.database.ref(`streams/${parts}`).get('once')
+        this.$fire.database.ref(`streams/${parts[0]}`).get('once')
         .then((data) => {
             var event = data.val()
             this.playVideo(event.url)
